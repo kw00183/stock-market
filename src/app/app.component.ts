@@ -26,6 +26,10 @@ export class AppComponent implements OnInit, OnChanges, OnDestroy,
     console.log('App Component - On Init');
   }
 
+  testMethod() {
+    console.log('Test method in AppComponent triggered');
+  }
+
   ngAfterViewInit(): void {
     console.log('App Component - After View Init');
   }
