@@ -9,14 +9,18 @@ import { Stock } from '../../model/stock';
 })
 export class StockItemComponent implements OnInit {
 
-  public stock: Stock;
+  public stocks: Array<Stock>;
   public stockClasses;
   public stockStyles;
 
   constructor() { }
 
   ngOnInit() {
-    this.stock = new Stock('Test Stock Company', 'TSC', 85, 80);
+    this.stocks = [
+      new Stock('Test Stock Company', 'TSC', 85, 80),
+      new Stock('Second Stock Company', 'SSC', 10, 20),
+      new Stock('Last Stock Company', 'LSC', 876, 765)
+    ];
     let diff = (this.stock.price / this.stock.previousPrice) - 1;
     let largeChange = Math.abs(diff) > 0.01;
     this.stockClasses = {
@@ -31,8 +35,8 @@ export class StockItemComponent implements OnInit {
     };
   }
 
-  toggleFavorite(event) {
-    console.log('We are toggling the favorite state for this stock', event);
-    this.stock.favorite = !this.stock.favorite;
+  toggleFavorite(event, index) {
+    console.log('We are toggling the favorite state for this stock', index , event);
+    this.stock[index].favorite = !this.stock[index].favorite;
   }
 }
