@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "stock-market"
+    }
+  },
+  "defaultProject": "stock-market",
+  "cli": {
+    "analytics": false
+  }
 }
