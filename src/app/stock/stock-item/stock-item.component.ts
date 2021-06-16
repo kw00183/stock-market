@@ -11,6 +11,7 @@ export class StockItemComponent implements OnInit {
 
   public stock: Stock;
   public stockClasses;
+  public stockStyles;
 
   constructor() { }
 
@@ -24,9 +25,13 @@ export class StockItemComponent implements OnInit {
       "large-change": largeChange,
       "small-change": !largeChange
     };
+    this.stockStyles = {
+      "color": this.stock.isPositiveChange() ? "green" : "red",
+      "font-size": largeChange ? "1.2em" : "0.8em"
+    };
   }
 
-  toggleFavorite() {
+  toggleFavorite(event) {
     console.log('We are toggling the favorite state for this stock', event);
     this.stock.favorite = !this.stock.favorite;
   }
