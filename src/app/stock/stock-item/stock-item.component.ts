@@ -39,4 +39,8 @@ export class StockItemComponent implements OnInit {
     console.log('We are toggling the favorite state for this stock', index , event);
     this.stock[index].favorite = !this.stock[index].favorite;
   }
+
+  trackStockByCode(index, stock) {
+    return stock.code;
+  }
 }
