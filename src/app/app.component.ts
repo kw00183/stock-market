@@ -8,11 +8,8 @@ import { Stock } from '../app/model/stock';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'app works!';
-
-  constructor(public messageService: MessageService) {}
+  title = 'Stock Market App';
 
   ngOnInit(): void {
-    this.messageService.message = 'Hello Message Service!';
   }
 }

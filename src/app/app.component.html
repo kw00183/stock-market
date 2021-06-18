@@ -7,14 +7,13 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<div style="text-align:center">
-	<h1>
-  	{{title}}
-	</h1>
-	<h3>App level: {{messageService.message}}</h3>
-	<app-stock-list></app-stock-list>
-	<app-create-stock></app-create-stock>
+<div class="links">
+  <span><a routerLink="/login" routerLinkActive="active">Login</a></span>
+  <span><a routerLink="/register" routerLinkActive="active">Register</a></span>
+  <span><a routerLink="/stocks/list" routerLinkActive="active">Stock List</a></span>
+  <span><a routerLink="/stocks/create" routerLinkActive="active">Create Stock</a></span>
 </div>
+<router-outlet></router-outlet>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
