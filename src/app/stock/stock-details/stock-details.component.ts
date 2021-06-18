@@ -18,5 +18,4 @@ export class StockDetailsComponent implements OnInit {
     const stockCode = this.route.snapshot.paramMap.get('code');
     this.stockService.getStock(stockCode).subscribe(stock => this.stock = stock);
   }
-
 }
