@@ -21,7 +21,9 @@ export class LoginComponent {
       .subscribe((resp) => {
         console.log('Successfully logged in');
         this.message = resp.msg;
-        this.router.navigate(['stocks', 'list']);
+        this.router.navigate(['stocks', 'list'], {
+          queryParams: {page: 1}
+        });
       }, (err) => {
         console.error('Error logging in', err);
         this.message = err.error.msg;
