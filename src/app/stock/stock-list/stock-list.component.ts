@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { StockService } from '../../services/stock.service';
+import { Stock } from '../../model/stock';
 
 @Component({
   selector: 'app-stock-list',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StockListComponent implements OnInit {
 
-  constructor() { }
+  public stocks: Stock[];
+  constructor(private stockService: StockService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.stocks = this.stockService.getStocks();
   }
 
+  onToggleFavorite(stock: Stock) {
+    console.log('Favorite for stock ', stock, ' was triggered');
+    this.stockService.toggleFavorite(stock);
+  }
 }
