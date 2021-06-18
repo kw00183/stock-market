@@ -11,14 +11,20 @@ import { Observable } from 'rxjs';
 })
 export class StockListComponent implements OnInit {
 
-  public stocks: Observable<Stock[]>;
+  //public stocks: Stock[];
+  public stocks$: Observable<Stock[]>;
   constructor(private stockService: StockService) { }
 
   ngOnInit() {
-    this.stocks = this.stockService.getStocks();
+    /**this.stockService.getStocks()
+        .subscribe(stocks => {
+          this.stocks = stocks;
+    });*/
+    this.stocks$ = this.stockService.getStocks();
   }
 
   onToggleFavorite(stock: Stock) {
+    console.log('Favorite for stock ', stock, ' was triggered');
     this.stockService.toggleFavorite(stock);
   }
 }
