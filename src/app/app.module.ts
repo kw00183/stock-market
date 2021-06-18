@@ -13,6 +13,8 @@ import { StockListComponent } from './stock/stock-list/stock-list.component';
 import { StockService } from '../app/services/stock.service';
 import { MessageService } from '../app/services/message.service';
 
+import { AppRoutesModule } from './app-routes.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +25,8 @@ import { MessageService } from '../app/services/message.service';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
+    AppRoutesModule,
   ],
   providers: [
     StockService,
