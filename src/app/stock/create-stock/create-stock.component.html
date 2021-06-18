@@ -7,9 +7,9 @@
              placeholder="Stock Name"
              name="stockName"
              formControlName="name">
-      <div *ngIf="name.invalid &&
-                  ( name.dirty ||
-                    name.touched )">
+      <div *ngIf="stockForm.get('name').invalid &&
+                  ( stockForm.get('name').dirty ||
+                    stockForm.get('name').touched )">
         Name is required
       </div>
     </div>
@@ -17,14 +17,14 @@
       <input type="text"
               placeholder="Stock Code"
               formControlName="code">
-      <div *ngIf="code.invalid &&
-                  ( code.dirty ||
-                    code.touched )">
-        <div *ngIf="code.errors.required">
+      <div *ngIf="stockForm.get('code').invalid &&
+                  ( stockForm.get('code').dirty ||
+                    stockForm.get('code').touched )">
+        <div *ngIf="stockForm.get('code').errors.required">
           Stock Code is required
         </div>
-        <div *ngIf="code.errors.minlength">
-          Stock Code must be at least 2 characters
+        <div *ngIf="stockForm.get('code').errors.minlength">
+          Stock Code must be atleast 2 characters
         </div>
       </div>
     </div>
@@ -32,20 +32,46 @@
       <input type="number"
               placeholder="Stock Price"
               formControlName="price">
-      <div *ngIf="price.invalid &&
-                  ( price.dirty ||
-                    price.touched )">
-        <div *ngIf="price.errors.required">
+      <div *ngIf="stockForm.get('price').invalid &&
+                  ( stockForm.get('price').dirty ||
+                    stockForm.get('price').touched )">
+        <div *ngIf="stockForm.get('price').errors.required">
           Stock Price is required
         </div>
-        <div *ngIf="price.errors.min">
-          Stock Price must be positive
+        <div *ngIf="stockForm.get('price').errors.min">
+          Stock price must be positive
         </div>
       </div>
     </div>
+    <div formArrayName="notablePeople">
+      <div *ngFor="let person of notablePeople.controls; let i = index"
+           [formGroupName]="i"
+           class="notable-people">
+        <div>
+          Person {{i + 1}}
+        </div>
+        <div>
+          <input type="text"
+                 placeholder="Person Name"
+                 formControlName="name">
+        </div>
+        <div>
+          <input type="text"
+                  placeholder="Person Title"
+                  formControlName="title">
+        </div>
+        <button type="button" (click)="removeNotablePerson(i)">Remove Person</button>
+      </div>
+    </div>
+    <button type="button" (click)="addNotablePerson()">Add Notable Person</button>
     <button type="submit">Submit</button>
+    <button type="button"
+            (click)="resetForm()">
+      Reset
+    </button>
   </form>
 </div>
 
 <p>Form Control value: {{ stockForm.value | json }}</p>
 <p>Form Control status: {{ stockForm.status | json }}</p>
+<p>Stock Value: {{stock | json}}</p>
