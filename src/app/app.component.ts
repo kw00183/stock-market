@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from '../app/services/message.service';
 import { Stock } from '../app/model/stock';
 
 @Component({
@@ -7,8 +8,11 @@ import { Stock } from '../app/model/stock';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Stock Market App';
+  title = 'app works!';
+
+  constructor(public messageService: MessageService) {}
 
   ngOnInit(): void {
+    this.messageService.message = 'Hello Message Service!';
   }
 }
